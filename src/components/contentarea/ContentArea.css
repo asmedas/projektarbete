@@ -1,0 +1,8 @@
+.contentarea{
+    width: 80%;
+    border-radius: 20px;
+
+    background: transparent;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+}
