@@ -48,7 +48,6 @@ function LoginPage(){
                 <input type="text" name='password' id='password' value={password} onChange={handlePasswordInput} /><br />
                 <button type='submit'>Login</button>
             </form>
-            <h1>response: </h1>
         </div>
     )
 }

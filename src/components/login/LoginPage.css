@@ -1,0 +1,8 @@
+.loginpage{
+    width: auto;
+    background: transparent;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+}

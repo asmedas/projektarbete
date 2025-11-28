@@ -21,7 +21,8 @@ body {
 button {
   padding: 10px 22px;
   margin-top: 5px;
-  width: 100%;
+  margin-bottom: 5px;
+  width: 90%;
   max-width: 120px;
   display: inline-flex;
   justify-content: center;

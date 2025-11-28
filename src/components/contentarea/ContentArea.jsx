@@ -7,8 +7,9 @@ export default function ContentArea({page}){
     switch(page){
         case "Home":
             return (
-                <>
-                </>   
+                <div className='contentarea'>
+                    <h1>header</h1>
+                </div>
             )
         case "Login":
             return (
