@@ -6,10 +6,13 @@ import './MainLayout.css'
 
 function MainLayout(){
     const [page, setPage] = useState("")
+
+    const pageChangeHandler = (selectedPage) => {setPage(selectedPage)}
+    
     return (
         <div className='mainlayout'>
-            <Sidebar />
-            <ContentArea />
+            <Sidebar onSelectContent={pageChangeHandler}/>
+            <ContentArea page={page}/>
             <Advertisement />
         </div>
     )

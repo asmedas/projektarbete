@@ -1,5 +1,7 @@
 .sidebar {
     width: 8%;
+    min-width: 70px;
+    max-width: 120px;
     height: 100%;
     border-collapse: collapse;
     border-radius: 20px;
@@ -7,6 +9,4 @@
     background: transparent;
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
-
-
 }

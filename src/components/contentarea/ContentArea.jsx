@@ -1,12 +1,37 @@
 import React from 'react'
 import './ContentArea.css'
+import LoginPage from '../login/LoginPage'
 
-function ContentArea(){
-    return(
-        <div  className='contentarea'>
-            <h1>contentarea</h1>
-        </div>       
-    )
+export default function ContentArea({page}){
+
+    switch(page){
+        case "Home":
+            return (
+                <>
+                </>   
+            )
+        case "Login":
+            return (
+                <div className='contentarea'>
+                    <LoginPage/>
+                </div>
+            )
+        case "Profile":
+            return (
+                <div className='contentarea'>
+                    Profile page
+                </div>
+            )
+        case "Settings":
+            return (
+                <div className='contentarea'>
+                    Settings page
+                </div>
+            )
+        default:
+            return (
+                <>
+                </> 
+            )
+    }
 }
-
-export default ContentArea;
