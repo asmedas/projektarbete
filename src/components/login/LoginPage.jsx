@@ -42,9 +42,9 @@ function LoginPage(){
         <div className='loginpage'>
             <h1>LoginPage</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username: </label>
+                <label htmlFor="username">Username</label><br />
                 <input type="text" name="username" id="username" value={username} onChange={handleUsernameInput}/><br />
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password">Password</label><br />
                 <input type="text" name='password' id='password' value={password} onChange={handlePasswordInput} /><br />
                 <button type='submit'>Login</button>
             </form>

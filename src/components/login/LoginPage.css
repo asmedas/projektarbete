@@ -1,8 +1,9 @@
 .loginpage{
     width: auto;
+    height: auto;
     background: transparent;
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 20px;
 }

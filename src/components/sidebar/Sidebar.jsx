@@ -13,7 +13,7 @@ export default function SideBar({onSelectContent}){
         </li>
         <li>
           <button onClick={()=>onSelectContent("Login")}>
-            Login
+            Logout
           </button>
         </li>
       </nav>

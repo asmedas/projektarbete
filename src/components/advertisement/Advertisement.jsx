@@ -4,7 +4,7 @@ import './Advertisement.css'
 function Advertisement (){
     return (
         <div className='advertisement'>
-            <h1>reklam av något slag</h1>
+            <h3>reklam av något slag</h3>
         </div>
     )
 }

@@ -11,13 +11,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body {
-  background-image: url('./assets/headerpicture.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
 button {
   padding: 10px 22px;
   margin-top: 5px;
@@ -58,4 +51,31 @@ button:active {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 3px 8px rgba(0,0,0,0.20);
   transform: translateY(0px);
+}
+
+body {
+  font-size: clamp(14px, 2vw + 1rem, 20px);
+  background-image: url('./assets/headerpicture.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+body {
+  font-size: 14px;
+}
+button{
+  font: inherit
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
 }

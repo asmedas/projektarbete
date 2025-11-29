@@ -8,7 +8,8 @@ export default function ContentArea({page}){
         case "Home":
             return (
                 <div className='contentarea'>
-                    <h1>header</h1>
+                    <>
+                    </>
                 </div>
             )
         case "Login":
@@ -31,8 +32,10 @@ export default function ContentArea({page}){
             )
         default:
             return (
-                <>
-                </> 
+                <div className='contentarea'>
+                    <>
+                    </>
+                </div>
             )
     }
 }
