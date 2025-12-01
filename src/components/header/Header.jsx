@@ -7,7 +7,7 @@ function Header(){
     return(
         <header className='header'>
             <img className="logo" src={KoncernensLogga} alt="logga" />
-            <h1>Wigells biluthyrning</h1>
+            <h1>Wigells car dealership</h1>
         </header>
     )
 }

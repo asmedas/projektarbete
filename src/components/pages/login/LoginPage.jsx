@@ -1,41 +1,26 @@
 import React, {useState} from 'react'
 import './LoginPage.css'
+import {useAuth} from '../../auth/AuthProvider'
 
-function LoginPage(){
+function LoginPage({onSelectContent}){
+    const {login} = useAuth();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [response, setResponse] = useState("")
 
     const handleUsernameInput = (e) => setUsername(e.target.value)
     const handlePasswordInput = (e) => setPassword(e.target.value)
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
-        const url = 'http://localhost:8080/api/v1/auth/login';
-        
-        try {
 
-            const response = await fetch(url, {
-                method: 'POST',
-                headers:{
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ username, password }),
-            });
+        const result = await login(username, password);
 
-            if (!response.ok) {
-                throw new Error("Login failed");
-            }
-
-            const data = await response.text();
-            console.log("SUCCESS:", data);
-
-
-            alert("Logged in: " + data);
-
-        } catch (error) {
-            console.error("Fetch error:", error);
+        if (!result.success) {
+        alert("Login failed");
+        return;
         }
+        onSelectContent("Home")
+
     }
 
     return (

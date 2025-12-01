@@ -1,12 +1,15 @@
 .sidebar {
-    width: 8%;
+    width: 10%;
     min-width: 55px;
-    max-width: 130px;
-    height: 100%;
+    max-width: 200px;
+    height: auto;
     border-collapse: collapse;
     border-radius: 20px;
+    align-self: flex-start;
 
     background: transparent;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.);
+    backdrop-filter: blur(20px);
+    
+    
 }

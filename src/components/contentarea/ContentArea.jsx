@@ -1,21 +1,21 @@
 import React from 'react'
 import './ContentArea.css'
-import LoginPage from '../login/LoginPage'
+import LoginPage from '../pages/login/LoginPage'
+import { useAuth } from '../auth/AuthProvider'
+import Home from '../home/Home'
 
-export default function ContentArea({page}){
+export default function ContentArea({page, onSelectContent}){
+    const {auth} = useAuth();
 
     switch(page){
         case "Home":
             return (
-                <div className='contentarea'>
-                    <>
-                    </>
-                </div>
+                <Home/>
             )
         case "Login":
             return (
                 <div className='contentarea'>
-                    <LoginPage/>
+                    <LoginPage onSelectContent={onSelectContent}/>
                 </div>
             )
         case "Profile":
@@ -32,10 +32,7 @@ export default function ContentArea({page}){
             )
         default:
             return (
-                <div className='contentarea'>
-                    <>
-                    </>
-                </div>
+                <Home/>
             )
     }
 }

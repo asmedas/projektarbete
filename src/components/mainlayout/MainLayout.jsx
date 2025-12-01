@@ -12,7 +12,7 @@ function MainLayout(){
     return (
         <div className='mainlayout'>
             <Sidebar onSelectContent={pageChangeHandler}/>
-            <ContentArea page={page}/>
+            <ContentArea page={page} onSelectContent={pageChangeHandler}/>
             <Advertisement />
         </div>
     )

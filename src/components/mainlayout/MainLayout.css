@@ -1,12 +1,7 @@
-.mainlayout{
+.mainlayout {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex: 1;
+    justify-content: space-between; /* Alignar komponenterna så de hamnar på jämnt avstånd*/
     margin-top: 10px;
     gap: 5px;
-}
-
-.mainlayout > .advertisement {
-    margin-left: auto;
 }
