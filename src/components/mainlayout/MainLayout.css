@@ -1,7 +1,7 @@
 .mainlayout {
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Alignar komponenterna så de hamnar på jämnt avstånd*/
+    justify-content: space-between;
     margin-top: 10px;
     gap: 5px;
 }

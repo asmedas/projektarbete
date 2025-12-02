@@ -3,6 +3,8 @@ import './ContentArea.css'
 import LoginPage from '../pages/login/LoginPage'
 import { useAuth } from '../auth/AuthProvider'
 import Home from '../home/Home'
+import CustomerViewCard from '../car-components/CustomerViewCard'
+import AdminViewCard from '../car-components/AdminViewCars'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
@@ -22,7 +24,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "ViewCars":
             return(
-                <h1>View all cars component</h1>
+                <CustomerViewCard/>
             )
         case "CarById":
             return(

@@ -34,6 +34,7 @@ button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  font: inherit;
 
   background: rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(8px);
@@ -94,8 +95,27 @@ body {
 body {
   font-size: 14px;
 }
-button{
-  font: inherit
+
+.panel {
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    display: inline-block;
+    width: auto;
+}
+
+.panel.neutral {
+    background-color: white;
+}
+
+.panel.positive {
+    background-color: rgb(138, 240, 138);
+    color: black;
+}
+
+.panel.negative {
+    background-color: rgb(235, 117, 117);
+    color: black;
 }
 
 @media screen and (min-width: 600px) {
