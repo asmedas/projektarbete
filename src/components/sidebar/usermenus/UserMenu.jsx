@@ -6,7 +6,7 @@ export default function UserMenu({onSelectContent}){
     if(!usersOpen){
         return(
             <button onClick={()=>setUserOpen(!usersOpen)}>
-                Users {bookingsOpen ? "▲" : "▼"}
+                Users {usersOpen ? "▲" : "▼"}
             </button>
         )
     }
@@ -15,10 +15,11 @@ export default function UserMenu({onSelectContent}){
         return(
             <>
                 <button onClick={()=>setUserOpen(!usersOpen)}>
-                    Users {bookingsOpen ? "▲" : "▼"}
+                    Users {usersOpen ? "▲" : "▼"}
                 </button>
-                <div className='subMenu'>
-                    <button onClick={() => onSelectContent}></button>
+                <div className='submenu'>
+                    <button onClick={() => onSelectContent("UserById")}>Get user by ID</button>
+                    <button onClick={() => onSelectContent("UpdateUser")}>Update user</button>
                 </div>
             </>
         )

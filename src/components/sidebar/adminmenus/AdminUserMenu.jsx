@@ -12,7 +12,7 @@ export default function AdminUserMenu({onSelectContent}){
 
             <div className="submenu">
                 <button onClick={() => onSelectContent("UsersAll")}>All Users</button>
-                <button onClick={() => onSelectContent("UsersStats")}>Delete User</button>
+                <button onClick={() => onSelectContent("DeleteUser")}>Delete User</button>
             </div>
         </>
         )
