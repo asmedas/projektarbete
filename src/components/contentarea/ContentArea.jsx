@@ -1,13 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ContentArea.css'
 import LoginPage from '../pages/login/LoginPage'
 import { useAuth } from '../auth/AuthProvider'
 import Home from '../home/Home'
 import CustomerViewCard from '../car-components/CustomerViewCard'
 import AdminViewCard from '../car-components/AdminViewCars'
+import OrderCar from '../car-components/ordercar/OrderCar'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
+
+    const [selectedCarId, setSelectedCarId] = useState(null);
+
+    const handleSelectContent = (newPage, carId = null) => {
+        setSelectedCarId(carId);
+        onSelectContent(newPage); 
+    };
 
     switch(page){
         case "Home":
@@ -24,7 +32,11 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "ViewCars":
             return(
-                <CustomerViewCard/>
+                <CustomerViewCard onSelectContent={handleSelectContent}/>
+            )
+        case "AdminViewCars":
+            return(
+                <AdminViewCard/>
             )
         case "CarById":
             return(
@@ -48,7 +60,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "OrderCar":
             return(
-                <h1>Order car component</h1>
+                <OrderCar carId={selectedCarId} />
             )
         case "UsersAll":
             return(

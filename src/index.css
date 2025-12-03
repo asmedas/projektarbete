@@ -96,6 +96,15 @@ body {
   font-size: 14px;
 }
 
+.form{
+  height: auto;
+  background: transparent;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  padding: 1rem;
+  border-radius: 20px;
+}
+
 .panel {
     padding: 20px;
     border-radius: 6px;
@@ -110,12 +119,10 @@ body {
 
 .panel.positive {
     background-color: rgb(138, 240, 138);
-    color: black;
 }
 
 .panel.negative {
     background-color: rgb(235, 117, 117);
-    color: black;
 }
 
 @media screen and (min-width: 600px) {

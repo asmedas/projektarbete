@@ -4,8 +4,8 @@ import Advertisement from '../advertisement/Advertisement'
 import ContentArea from '../contentarea/ContentArea'
 import './MainLayout.css'
 
-function MainLayout(){
-    const [page, setPage] = useState("")
+export default function MainLayout(){
+    const [page, setPage] = useState("Home")
 
     const pageChangeHandler = (selectedPage) => {setPage(selectedPage)}
     
@@ -17,5 +17,3 @@ function MainLayout(){
         </div>
     )
 }
-
-export default MainLayout;

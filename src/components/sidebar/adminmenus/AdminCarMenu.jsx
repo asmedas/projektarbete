@@ -11,7 +11,7 @@ export default function AdminCarMenu({onSelectContent}){
             </button>
 
             <div className="submenu">
-                <button onClick={() => onSelectContent("ViewCars")}>View cars</button>
+                <button onClick={() => onSelectContent("AdminViewCars")}>View cars</button>
                 <button onClick={() => onSelectContent("AddCar")}>Add car</button>
                 <button onClick={() => onSelectContent("UpdateCar")}>Update car</button>
                 <button onClick={() => onSelectContent("ReturnCar")}>Return car</button>

@@ -1,5 +1,4 @@
 .carcard{
-    height: auto;
     align-self: flex-start;
     background: transparent;
     background: rgba(255,255,255,0.15);
@@ -13,4 +12,10 @@
     object-fit: cover;
     border-radius: 15px;
     display: block;
+}
+.carcard:hover{
+    background: rgba(255, 255, 255, 0.32);
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+    transform: translateY(-2px);
 }

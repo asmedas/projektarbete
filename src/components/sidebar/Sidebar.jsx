@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Sidebar.css"
 import { useAuth } from "../auth/AuthProvider";
 import AdminUserMenu  from "./adminmenus/AdminUserMenu";
@@ -9,6 +9,8 @@ import UserMenu from "./usermenus/UserMenu";
 
 export default function SideBar({onSelectContent}){
   const {auth, logout} = useAuth();
+  console.log("Sidebar render - user:", auth.user, "isAdmin:", auth.isAdmin);
+
 
   if(auth.user === null && auth.authHeader === null && auth.isAdmin === false){
     return (

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import CarCard from './carcard/CarCard';
 import './CustomerViewCard.css'
 
-export default function CustomerViewCard(){
+export default function CustomerViewCard({onSelectContent}){
     const [cars, setCars] = useState([])
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function CustomerViewCard(){
     return(
         <div className='customerviewcard'>
             {cars.map(car => (
-                <CarCard key={car.id} car={car} />
+                <CarCard key={car.id} car={car} onSelectContent={onSelectContent}/>
             ))}
         </div>
     )

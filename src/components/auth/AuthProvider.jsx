@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
@@ -9,30 +9,54 @@ export default function AuthProvider({children}){
         authHeader: null
     })
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        const storedIsAdmin = localStorage.getItem("isAdmin");
+        const storedAuthHeader = localStorage.getItem("authHeader");
+
+        if (storedUser && storedAuthHeader) {
+            setAuth({
+            user: storedUser,
+            isAdmin: storedIsAdmin === "true",
+            authHeader: storedAuthHeader,
+            });
+        }
+    }, []);
+
     //login - loggar in, stämmer allt så sätts authheader till username + det base64 krypterade password.
     //Därefter sätts vår auth till vår användare helt enkelt och isAdmin används för rendering av olika sidor i applikationen
     const login = useCallback(async (username, password) => {
-        const response = await fetch("http://localhost:8080/api/v1/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-        });
+        try{
+            const response = await fetch("http://localhost:8080/api/v1/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+            });
 
-        if (!response.ok) {
-        return { success: false, error: "Invalid credentials" };
-        }
+            if (!response.ok) {
+            return { success: false, error: "Invalid credentials" };
+            }
 
-        const data = await response.json();
-        console.log(data)
-        const base64 = btoa(`${username}:${password}`);
-        const authHeader = `Basic ${base64}`;
-        setAuth({
-        user: data.username,
-        isAdmin: data.isAdmin,
-        authHeader
-        });
+            const data = await response.json();
+            console.log(data)
+            const base64 = btoa(`${username}:${password}`);
+            const authHeader = `Basic ${base64}`;
 
-        return { success: true };
+            const newAuth = {
+            user: data.username,
+            isAdmin: data.isAdmin,
+            authHeader,
+            };
+
+            setAuth(newAuth);
+
+            localStorage.setItem("user", newAuth.user)
+            localStorage.setItem("isAdmin", newAuth.isAdmin)
+            localStorage.setItem("authHeader", newAuth.authHeader)
+            return { success: true };
+        } catch (error) {
+            return { success: false, error: "Network error" };
+    }
     }, []);
     
     //logout - nollställer alla värden i vår auth state
@@ -42,6 +66,9 @@ export default function AuthProvider({children}){
         isAdmin: false,
         authHeader: null
         });
+        localStorage.removeItem("user")
+        localStorage.removeItem("isAdmin")
+        localStorage.removeItem("authHeader")
     };
 
     //Sätter Authorization i headern, slipper vi tänkta på detta vid anrop
