@@ -8,25 +8,24 @@ export default function CarCard({car, onSelectContent}){
     const {auth} = useAuth()
 
     const handleClick = () => {
-            if (car.booked){
-                alert("Already booked!")
-                return;
-            }
+      if (car.booked){
+          alert("Already booked!")
+          return;
+      }
 
-            if (!auth.user || !auth.authHeader) {
-                alert("user not logged in, please log in")
-                onSelectContent('Login');
-                return;
-            }
+      if (!auth.user || !auth.authHeader) {
+          alert("user not logged in, please log in")
+          onSelectContent('Login');
+          return;
+      }
 
-            if (auth.isAdmin) {
-                return;
-            }
-            
-            onSelectContent("OrderCar", car.id)
+      if (auth.isAdmin) {
+          return;
+      }
+      
+      onSelectContent("OrderCar", car)
     }
     
-
     return (
     <div className={`carcard ${car.booked ? 'booked' : ''}`} onClick={handleClick}>
       <img 
@@ -38,10 +37,10 @@ export default function CarCard({car, onSelectContent}){
       <p>{car.feature1} • {car.feature3} • {car.feature2}</p>
       {car.booked && <p className="panel negative">Already Booked</p>}
       {!car.booked && 
-      <>
-      <label htmlFor="price">Price: {car.price} </label>
-      <p className="panel positive">Purchase</p>
-      </>}
+        <>
+            <label htmlFor="price">Price: {car.price}$ </label>
+            <p className="panel positive">Purchase</p>
+        </>}
     </div>
   );
     

@@ -59,6 +59,40 @@ button {
     transform 0.15s ease;
 }
 
+.table{
+  background: rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(8px);
+  width: auto;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.table th, .table td {
+    border-bottom: 1px solid #050505;
+    padding: 10px;
+    text-align: left;
+}
+
+.table tr:nth-child(even) {
+    background: rgba(17, 16, 16, 0.384);
+}
+
+.table th {
+    background: rgba(17, 16, 16, 0.384);
+}
+.table img {
+  max-width: 150px;
+  max-height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.table tr:hover{
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+  transform: translateY(-2px);
+}
+
 button:hover {
   background: rgba(255, 255, 255, 0.32);
   border-color: rgba(255, 255, 255, 0.55);
@@ -96,13 +130,15 @@ body {
   font-size: 14px;
 }
 
-.form{
-  height: auto;
-  background: transparent;
+.form {
+  width: fit-content;
+  max-width: 100%;
+  padding: 2rem;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(20px);
-  padding: 1rem;
   border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .panel {

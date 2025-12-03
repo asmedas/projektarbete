@@ -1,8 +1,8 @@
 .contentarea {
   width: 80%;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding-top: 20px;
+  min-height: 70vh;
 }

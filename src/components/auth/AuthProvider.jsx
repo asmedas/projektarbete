@@ -4,22 +4,29 @@ const AuthContext = createContext(null);
 
 export default function AuthProvider({children}){
     const [auth, setAuth] = useState({
+        id: null,
         user: null,
         isAdmin: false,
-        authHeader: null
+        authHeader: null,
+        loading: true
     })
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        const storedIsAdmin = localStorage.getItem("isAdmin");
-        const storedAuthHeader = localStorage.getItem("authHeader");
+        const storedId = localStorage.getItem("id")
+        const storedUser = localStorage.getItem("user")
+        const storedIsAdmin = localStorage.getItem("isAdmin")
+        const storedAuthHeader = localStorage.getItem("authHeader")
 
         if (storedUser && storedAuthHeader) {
             setAuth({
-            user: storedUser,
-            isAdmin: storedIsAdmin === "true",
-            authHeader: storedAuthHeader,
+                id: storedId,
+                user: storedUser,
+                isAdmin: storedIsAdmin === "true",
+                authHeader: storedAuthHeader,
+                loading: false
             });
+        } else {
+            setAuth(prev => ({ ...prev, loading: false }));
         }
     }, []);
 
@@ -43,13 +50,15 @@ export default function AuthProvider({children}){
             const authHeader = `Basic ${base64}`;
 
             const newAuth = {
-            user: data.username,
-            isAdmin: data.isAdmin,
-            authHeader,
+                id: data.id,
+                user: data.username,
+                isAdmin: data.isAdmin,
+                authHeader,
             };
 
             setAuth(newAuth);
 
+            localStorage.setItem("id", newAuth.id)
             localStorage.setItem("user", newAuth.user)
             localStorage.setItem("isAdmin", newAuth.isAdmin)
             localStorage.setItem("authHeader", newAuth.authHeader)
@@ -62,10 +71,12 @@ export default function AuthProvider({children}){
     //logout - nollställer alla värden i vår auth state
     const logout = () => {
         setAuth({
-        user: null,
-        isAdmin: false,
-        authHeader: null
+            id: null,
+            user: null,
+            isAdmin: false,
+            authHeader: null
         });
+        localStorage.removeItem("id")
         localStorage.removeItem("user")
         localStorage.removeItem("isAdmin")
         localStorage.removeItem("authHeader")

@@ -6,14 +6,15 @@ import Home from '../home/Home'
 import CustomerViewCard from '../car-components/CustomerViewCard'
 import AdminViewCard from '../car-components/AdminViewCars'
 import OrderCar from '../car-components/ordercar/OrderCar'
+import ReturnCar from '../car-components/returncar/ReturnCar'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
 
-    const [selectedCarId, setSelectedCarId] = useState(null);
+    const [car, setCar] = useState(null);
 
-    const handleSelectContent = (newPage, carId = null) => {
-        setSelectedCarId(carId);
+    const handleSelectContent = (newPage, car = null) => {
+        setCar(car);
         onSelectContent(newPage); 
     };
 
@@ -60,7 +61,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "OrderCar":
             return(
-                <OrderCar carId={selectedCarId} />
+                <OrderCar car={car} onSelectContent={onSelectContent}/>
             )
         case "UsersAll":
             return(
@@ -80,7 +81,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "ReturnCar":
             return(
-                <h1>Return car component</h1>
+                <ReturnCar/>
             )
         case "DeleteCar":
             return(
