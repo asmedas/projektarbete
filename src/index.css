@@ -29,7 +29,7 @@ button {
   padding: 10px 22px;
   margin-top: 5px;
   margin-bottom: 5px;
-  width: 90%;
+  width: 100%;
   max-width: 170px;
   display: inline-flex;
   justify-content: center;
@@ -58,18 +58,32 @@ button {
     box-shadow 0.25s ease,
     transform 0.15s ease;
 }
+button:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+  transform: translateY(-2px);
+}
+
+button:active {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.20);
+  transform: translateY(0px);
+}
 
 .table{
   background: rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(8px);
   width: auto;
   border-collapse: collapse;
-  margin: 20px 0;
 }
 .table th, .table td {
     border-bottom: 1px solid #050505;
     padding: 10px;
     text-align: left;
+    max-width: 200px;
+    white-space: normal;
+    word-break: break-all;
 }
 
 .table tr:nth-child(even) {
@@ -91,19 +105,6 @@ button {
   border-color: rgba(255, 255, 255, 0.55);
   box-shadow: 0 6px 14px rgba(0,0,0,0.22);
   transform: translateY(-2px);
-}
-
-button:hover {
-  background: rgba(255, 255, 255, 0.32);
-  border-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
-  transform: translateY(-2px);
-}
-
-button:active {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.20);
-  transform: translateY(0px);
 }
 
 .submenu {
@@ -131,14 +132,22 @@ body {
 }
 
 .form {
+  height: auto;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
   width: fit-content;
   max-width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   text-align: center;
+}
+.form label,
+.form input {
+  display: block;
 }
 
 .panel {

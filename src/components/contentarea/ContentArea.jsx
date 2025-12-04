@@ -7,6 +7,8 @@ import CustomerViewCard from '../car-components/CustomerViewCard'
 import AdminViewCard from '../car-components/AdminViewCars'
 import OrderCar from '../car-components/ordercar/OrderCar'
 import ReturnCar from '../car-components/returncar/ReturnCar'
+import AddUser from '../user-components/adduser/AddUser'
+import ViewUsers from '../user-components/viewusers/ViewUsers'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
@@ -29,7 +31,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "NewUser":
             return(
-                <h1>new user component</h1>
+                <AddUser onSelectContent={onSelectContent}/>
             )
         case "ViewCars":
             return(
@@ -65,7 +67,7 @@ export default function ContentArea({page, onSelectContent}){
             )
         case "UsersAll":
             return(
-                <h1>List all users component</h1>
+                <ViewUsers/>
             )
         case "DeleteUser":
             return(

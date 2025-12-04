@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import './LoginPage.css'
 import {useAuth} from '../../auth/AuthProvider'
 
 function LoginPage({onSelectContent}){
@@ -24,15 +23,15 @@ function LoginPage({onSelectContent}){
     }
 
     return (
-        <div className='loginpage'>
+        <div className='form'>
             <h1>LoginPage</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label><br />
+                <label htmlFor="username">Username</label>
                 <input type="text" name="username" id="username" placeholder='username'
-                 value={username} onChange={handleUsernameInput}/><br />
-                <label htmlFor="password">Password</label><br />
+                 value={username} onChange={handleUsernameInput}/>
+                <label htmlFor="password">Password</label>
                 <input type="text" name='password' id='password' placeholder='password'
-                 value={password} onChange={handlePasswordInput} /><br />
+                 value={password} onChange={handlePasswordInput} />
                 <button type='submit'>Login</button>
             </form>
         </div>

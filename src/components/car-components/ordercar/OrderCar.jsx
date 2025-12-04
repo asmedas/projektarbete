@@ -44,9 +44,6 @@ export default function OrderCar({car, onSelectContent}){
                 alert("Car booked successfully!");
                 onSelectContent("ViewCars");
 
-                
-                onSelectContent("ViewCars");
-
             } catch (error) {
                 console.error("Booking failed:", error);
                 alert("Failed to book car. Are you logged in?");
@@ -68,11 +65,11 @@ export default function OrderCar({car, onSelectContent}){
             <p>price: {car.price}$</p>
             <form onSubmit={handleSubmit}>
 
-                <label htmlFor="date">Date from</label><br />
-                <input type="date" id="startDate" value={startDate} onChange={handeStartDateInput}/><br />
+                <label htmlFor="date">Date from</label>
+                <input type="date" id="startDate" value={startDate} onChange={handeStartDateInput}/>
 
-                <label htmlFor="date">Date to</label><br />
-                <input type="date" id="endDate" value={endDate} onChange={handleEndDateInput}/><br /><br />
+                <label htmlFor="date">Date to</label>
+                <input type="date" id="endDate" value={endDate} onChange={handleEndDateInput}/>
 
                 <button type='submit'>Order</button>
             </form>
