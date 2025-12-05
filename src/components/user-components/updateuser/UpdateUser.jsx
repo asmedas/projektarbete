@@ -67,6 +67,7 @@ export default function UpdateUser({onSelectContent}){
                 const errorText = await response.text();
                 throw new Error(`Booking failed: ${response.status} - ${errorText}`);
             }
+            updateUser(updatedUser, auth.id)
             console.log("User updated!", response.status)
             alert("User updated")
             onSelectContent("Home")

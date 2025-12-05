@@ -102,13 +102,13 @@ export default function AuthProvider({children}){
         [auth.authHeader]
     );
 
-    const updateUser = useCallback((newUser) => {
+    const updateUser = useCallback((newUser, id) => {
         const base64 = btoa(`${newUser.username}:${newUser.password}`);
         const authHeader = `Basic ${base64}`;
         setAuth(prev => {
             const updated = {
                 ...prev,
-                id: newUser.id,
+                id: id,
                 user: newUser.username,
                 isAdmin: newUser.role === "admin",
                 authHeader: authHeader
