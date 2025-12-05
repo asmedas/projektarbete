@@ -19,7 +19,6 @@ export default function BookingsMenu({onSelectContent}){
                 <div className='submenu'>
                     <button onClick={() => onSelectContent("MyBookings")}>My bookings</button>
                     <button onClick={() => onSelectContent("SelectBookingById")}>Select booking</button>
-                    <button onClick={() => onSelectContent("OrderCar")}>Order car</button>
                 </div>
             </>
         )

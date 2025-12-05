@@ -18,7 +18,6 @@ export default function SideBar({onSelectContent}){
       <nav>
           <button onClick={() => onSelectContent("Home")}>Home</button>
           <button onClick={() => onSelectContent("ViewCars")}>View Cars</button>
-          <button onClick={() => onSelectContent("NewUser")}>New User</button>
           <button onClick={() => onSelectContent("Login")}>Login</button>
       </nav>
     </div>
@@ -30,7 +29,6 @@ export default function SideBar({onSelectContent}){
       <nav>
           <button onClick={() => onSelectContent("Home")}>Home</button>
           <button onClick={() => onSelectContent("ViewCars")}>View Cars</button>
-          <button onClick={() => onSelectContent("CarById")}>Select car</button>
           <UserMenu onSelectContent={onSelectContent} />
           <BookingsMenu onSelectContent={onSelectContent}/>
           <button onClick={() => {logout()

@@ -4,13 +4,13 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home">
-      <h1 className="home-title">Wigells Car Dealer</h1>
-      <p className="home-subtitle">
+      <h1>Wigells Car Dealer</h1>
+      <p>
         Family owned since 1987 — your trusted dealership for quality used cars,
         trade-ins, and financing.
       </p>
 
-      <div className="home-section">
+      <div>
         <h2>Browse Our Cars</h2>
         <p>
           Explore our full selection of inspected vehicles. Each car includes
@@ -19,7 +19,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="home-section">
+      <div>
         <h2>Finance & Ownership</h2>
         <p>
           Unsure what fits your budget? We offer transparent financing with
@@ -28,7 +28,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="home-section">
+      <div>
         <h2>Test Drives</h2>
         <p>
           Found something interesting? Book a test drive directly from the app.
@@ -36,7 +36,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="home-section">
+      <div>
         <h2>Trade-In Options</h2>
         <p>
           Thinking about switching cars? Get a fast valuation based on current
@@ -44,7 +44,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="home-footer">
+      <div>
         <p>Wigells Car Dealer • Quality you can trust</p>
       </div>
     </div>

@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import CarCard from './carcard/CarCard';
 import './CustomerViewCard.css'
+import ContentBox from '../contentarea/ContentBox';
+import GridWrapper from '../gridWrapper/GridWrapper';
 
 export default function CustomerViewCard({onSelectContent}){
     const [cars, setCars] = useState([])
+    const [nameFilter, setNameFilter] = useState("");
+    const [typeFilter, setTypeFilter] = useState("");
 
     useEffect(() => {
         const load = async () => {
@@ -21,11 +25,25 @@ export default function CustomerViewCard({onSelectContent}){
         load();
     }, []);
 
+    const filteredCars = cars.filter(car => {
+        const matchesName = car.name.toLowerCase().includes(nameFilter.toLowerCase());
+        const matchesType = car.type.toLowerCase().includes(typeFilter.toLowerCase());
+        return matchesName && matchesType;
+    });
+
     return(
-        <div className='customerviewcard'>
-            {cars.map(car => (
-                <CarCard key={car.id} car={car} onSelectContent={onSelectContent}/>
-            ))}
-        </div>
+        <>
+            <ContentBox>
+                <input type="text" placeholder="Filter by name" value={nameFilter}
+                    onChange={(e) => setNameFilter(e.target.value)}/>
+                <input type="text" placeholder="Filter by type" value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}/>
+            </ContentBox> <br />
+            <GridWrapper>
+                {filteredCars.map(car => (
+                    <CarCard key={car.id} car={car} onSelectContent={onSelectContent}/>
+                ))}
+            </GridWrapper>
+        </>
     )
 }

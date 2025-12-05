@@ -18,7 +18,7 @@ export default function UserMenu({onSelectContent}){
                     Users {usersOpen ? "▲" : "▼"}
                 </button>
                 <div className='submenu'>
-                    <button onClick={() => onSelectContent("UserById")}>Get user by ID</button>
+                    <button onClick={() => onSelectContent("UserByOwnId")}>Get user by ID</button>
                     <button onClick={() => onSelectContent("UpdateUser")}>Update user</button>
                 </div>
             </>

@@ -102,9 +102,31 @@ export default function AuthProvider({children}){
         [auth.authHeader]
     );
 
+    const updateUser = useCallback((newUser) => {
+        const base64 = btoa(`${newUser.username}:${newUser.password}`);
+        const authHeader = `Basic ${base64}`;
+        setAuth(prev => {
+            const updated = {
+                ...prev,
+                id: newUser.id,
+                user: newUser.username,
+                isAdmin: newUser.role === "admin",
+                authHeader: authHeader
+            };
+
+            localStorage.setItem("id", updated.id);
+            localStorage.setItem("user", updated.user);
+            localStorage.setItem("isAdmin", updated.isAdmin);
+            localStorage.setItem("authHeader", authHeader);
+
+            return updated;
+        });
+    }, []);
+
+
     //används som en wrapper och injicerar context till alla children som ligger under. i detta fall omsluts hela våran app i main.jsx av denna AuthProvider.
     return (
-    <AuthContext.Provider value={{ auth, login, logout, authFetch }}>
+    <AuthContext.Provider value={{ auth, login, logout, authFetch, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

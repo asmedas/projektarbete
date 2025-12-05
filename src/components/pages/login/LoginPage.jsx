@@ -33,6 +33,7 @@ function LoginPage({onSelectContent}){
                 <input type="text" name='password' id='password' placeholder='password'
                  value={password} onChange={handlePasswordInput} />
                 <button type='submit'>Login</button>
+                <p className="signup-link" onClick={() => onSelectContent("NewUser")}>New user? Sign up</p>
             </form>
         </div>
     )

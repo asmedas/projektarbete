@@ -1,0 +1,7 @@
+.contentbox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.2rem;
+}

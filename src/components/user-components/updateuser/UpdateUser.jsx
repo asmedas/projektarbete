@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import { useAuth } from '../../auth/AuthProvider'
+import { useAuth } from "../../auth/AuthProvider";
 
-export default function AddUser({onSelectContent}){
-    const {auth} = useAuth()
+export default function UpdateUser({onSelectContent}){
+    const {auth, authFetch, updateUser} = useAuth()
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
@@ -42,43 +42,43 @@ export default function AddUser({onSelectContent}){
         }
 
 
-        const newUser = {
+        const updatedUser = {
             firstName: firstName,
             lastName: lastName,
             username: username,
             phone: phone,
             email: email,
             password: password,
-            no_of_orders: 0,
+            noOfOrders: 0,
             role: role === "yes" ? "admin" : null
 
         };
 
         try{
-            const response = await fetch("http://localhost:8080/api/v1/users", {
-                method: "POST",
+            const response = await authFetch(`http://localhost:8080/api/v1/users/${auth.id}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(newUser)
+                body: JSON.stringify(updatedUser)
             })
 
             if(!response.ok){
                 const errorText = await response.text();
                 throw new Error(`Booking failed: ${response.status} - ${errorText}`);
             }
-            console.log("User created! status:", response.status)
-            alert("User created")
+            console.log("User updated!", response.status)
+            alert("User updated")
             onSelectContent("Home")
         } catch (error) {
-            console.error("Creation of user has failed", error)
-            alert("Failed to create a new user")
+            console.error("Couldn't update user", error)
+            alert("Failed to update user")
         }
     }
 
     return(
         <div className='form'>
-            <h1>New User</h1>
+            <h1>Update User {auth.id}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">Firstname</label>
                 <input type="text" name="firstName" id="firstName" placeholder='Firstname'
@@ -126,8 +126,7 @@ export default function AddUser({onSelectContent}){
                         </div>
                     </>
                 )}
-                <button type='submit'>Create user</button>
-                <p className="signup-link" onClick={() => onSelectContent("Login")}>Already got account? Sign in</p>
+                <button type='submit'>Update user</button>
             </form>
         </div>
     )

@@ -5,6 +5,7 @@
     backdrop-filter: blur(20px);
     padding: 1rem;
     border-radius: 20px;
+    max-width: 800px;
 }
 .carcard img {
     width: 100%;

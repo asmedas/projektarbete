@@ -1,0 +1,10 @@
+.usercard {
+    display: block;
+    justify-content: center;
+    background: transparent;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    padding: 1rem;
+    border-radius: 20px;
+    max-width: 800px;
+}

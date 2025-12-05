@@ -4,7 +4,6 @@ import {useAuth} from '../../auth/AuthProvider'
 import OrderCar from '../ordercar/OrderCar';
 
 export default function CarCard({car, onSelectContent}){
-    const decodedImage = decodeURIComponent(car.image);
     const {auth} = useAuth()
 
     const handleClick = () => {
@@ -23,7 +22,7 @@ export default function CarCard({car, onSelectContent}){
           return;
       }
       
-      onSelectContent("OrderCar", car)
+      setSelectedCar(car)
     }
     
     return (
@@ -38,8 +37,15 @@ export default function CarCard({car, onSelectContent}){
       {car.booked && <p className="panel negative">Already Booked</p>}
       {!car.booked && 
         <>
-            <label htmlFor="price">Price: {car.price}$ </label>
-            <p className="panel positive">Purchase</p>
+            <label htmlFor="price">Price: {car.price}$ </label><br />
+            <p className="panel positive" onClick={() => onSelectContent("OrderCar", car)}>Purchase</p>
+            <p 
+              className="panel neutral"
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelectContent("CarById", car);
+              }}
+            >View car</p>
         </>}
     </div>
   );
