@@ -45,7 +45,7 @@ export default function AddCar(){
         const formData = new FormData();
 
         if(name ===""){
-            alert("Name is required");
+            alert("Brand is required");
             return;
         }
         formData.append("name", name);
@@ -106,7 +106,7 @@ export default function AddCar(){
         <div className="form">
             <h1>Add New Car</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Brand:</label>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
                 <label htmlFor="model">Model:</label>
                 <input type="text" id="model" value={model} onChange={(e) => setModel(e.target.value)} required />

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import DataTable from '../../tables/DataTable'
 import { useAuth } from '../../auth/AuthProvider'
-import GridWrapper from '../../gridWrapper/GridWrapper'
 import ContentBox from '../../contentarea/ContentBox'
+import AdminUpdateUser from '../updateuser/AdminUpdateUser'
 
-export default function ViewUsers(){
+export default function ViewUsers({handleUserSelectContent}) {
     const [users, setUsers] = useState([])
     const {authFetch} = useAuth()
     const [userId, setUserId] = useState(null);
@@ -28,6 +28,14 @@ export default function ViewUsers(){
             console.error(err);
         }
     };
+
+    const handleUserSelectOnClick = (e) => {
+        if(userId === null){
+            alert("Please select a user to update")
+            return;
+        }
+        handleUserSelectContent("UpdateUser", userId);
+    }
 
     useEffect(() => {
         const load = async () => {
@@ -53,6 +61,7 @@ export default function ViewUsers(){
             <ContentBox>
                 <h2>selected user {userId}</h2>
                 <button onClick={handleDeleteClick}>Delete</button>
+                <button onClick={handleUserSelectOnClick}>Update</button>
             </ContentBox><br />
             <DataTable data={users} setId={setUserId}/>
         </>

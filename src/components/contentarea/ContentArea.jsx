@@ -11,18 +11,31 @@ import AddUser from '../user-components/adduser/AddUser'
 import ViewUsers from '../user-components/viewusers/ViewUsers'
 import CarCard from '../car-components/carcard/CarCard'
 import UserByOwnId from '../user-components/userByOwnId/UserByOwnId'
-import UpdateUser from '../user-components/updateuser/UpdateUser'
 import MyBookings from '../booking-components/mybookings/MyBookings'
 import SelectBookingById from '../booking-components/selectbookingbyid/SelectBookingById'
 import AddCar from '../car-components/addCar/AddCar'
 import UpdateCar from '../car-components/updatecar/UpdateCar'
+import AdminUpdateUser from '../user-components/updateuser/AdminUpdateUser'
+import ViewBookings from '../booking-components/adminbookings/ViewBookings'
+import UpdateBooking from '../booking-components/updatebooking/UpdateBooking'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
 
     const [car, setCar] = useState(null);
     const [carId, setCarId] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [bookingId, setBookingId] = useState(null);
 
+    const handleBookingSelectContent = (newPage, bookingId) => {
+        setBookingId(bookingId);
+        onSelectContent(newPage); 
+    }
+
+    const handleUserSelectContent = (newPage, userId) => {
+        setUserId(userId);
+        onSelectContent(newPage); 
+    }
     const handleSelectCarIdContent = (newPage, carId) => {
         setCarId(carId);
         onSelectContent(newPage); 
@@ -65,7 +78,7 @@ export default function ContentArea({page, onSelectContent}){
                 )
             case "UpdateUser":
                 return(
-                    <UpdateUser onSelectContent={onSelectContent}/>
+                    <AdminUpdateUser onSelectContent={onSelectContent} userId={userId}/>
                 )
             case "MyBookings":
                 return(
@@ -81,7 +94,7 @@ export default function ContentArea({page, onSelectContent}){
                 )
             case "UsersAll":
                 return(
-                    <ViewUsers/>
+                    <ViewUsers handleUserSelectContent={handleUserSelectContent}/>
                 )
             case "AddCar":
                 return(
@@ -95,13 +108,9 @@ export default function ContentArea({page, onSelectContent}){
                 return(
                     <ReturnCar carId={carId}/>
                 )
-            case "DeleteCar":
-                return(
-                    <h1>Delete car component</h1>
-                )
             case "GetBookings":
                 return(
-                    <h1>View all cookings component</h1>
+                    <ViewBookings handleBookingSelectContent={handleBookingSelectContent}/>
                 )
             case "GetActiveBookings":
                 return(
@@ -113,7 +122,7 @@ export default function ContentArea({page, onSelectContent}){
                 )
             case "UpdateBooking":
                 return(
-                    <h1>Update booking component</h1>
+                    <UpdateBooking booking={bookingId} onSelectContent={onSelectContent}/>
                 )
             case "DeleteBooking":
                 return(

@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import '../../index.css'
+import { useAuth } from '../auth/AuthProvider';
 export default function DataTable({ data, setId }) {
   if (!data || data.length === 0) return <p>No results</p>;
 
   const columns = Object.keys(data[0]);
+  const {auth} = useAuth();
   const [selectedRow, setSelectedRow] = useState(null);
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
@@ -59,11 +61,20 @@ export default function DataTable({ data, setId }) {
 
   const renderCell = (value) => {
       if (typeof value === 'boolean') {
-      return (
-        <span className={`badge ${value ? 'booked' : 'available'}`}>
-          {value ? 'Booked' : 'Available'}
-        </span>
-      );
+        if(auth.isAdmin){
+          return (
+            <span className={`badge ${value ? 'booked' : 'available'}`}>
+              {value ? 'Yes' : 'No'}
+            </span>
+          );
+        }
+        if(!auth.isAdmin){
+          return (
+            <span className={`badge ${value ? 'booked' : 'available'}`}>
+              {value ? 'Booked' : 'Available'}
+            </span>
+          );
+        }
     }
     if (Array.isArray(value)) {
       return JSON.stringify(value);

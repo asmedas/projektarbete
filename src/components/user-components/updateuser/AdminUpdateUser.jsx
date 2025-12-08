@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useAuth } from "../../auth/AuthProvider";
 
-export default function UpdateUser({onSelectContent}){
+export default function AdminUpdateUser({onSelectContent, userId}){
     const {auth, authFetch, updateUser} = useAuth()
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -24,6 +24,29 @@ export default function UpdateUser({onSelectContent}){
         const value = e.target.value.toLowerCase();
         setRole(value);
     };
+
+    useEffect(() => {
+        const loadUserData = async () => {
+            try {
+                const response = await authFetch(`http://localhost:8080/api/v1/users/${userId}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const data = await response.json();
+                setFirstName(data.firstName || "");
+                setLastName(data.lastName || "");
+                setUsername(data.username || "");
+                setPhone(data.phone || "");
+                setEmail(data.email || "");
+                setPassword("");
+                setRole(data.role === "admin" ? "yes" : "no");
+            } catch (error) {
+                console.error("Couldn't load user data", error);
+            }
+        };
+
+        loadUserData();
+    }, [userId, authFetch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -55,7 +78,7 @@ export default function UpdateUser({onSelectContent}){
         };
 
         try{
-            const response = await authFetch(`http://localhost:8080/api/v1/users/${auth.id}`, {
+            const response = await authFetch(`http://localhost:8080/api/v1/users/${userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -67,10 +90,12 @@ export default function UpdateUser({onSelectContent}){
                 const errorText = await response.text();
                 throw new Error(`Booking failed: ${response.status} - ${errorText}`);
             }
-            updateUser(updatedUser, auth.id)
+            if(auth.id === userId){
+                updateUser(updatedUser, userId)
+            }
             console.log("User updated!", response.status)
             alert("User updated")
-            onSelectContent("Home")
+            onSelectContent("ViewUsers")
         } catch (error) {
             console.error("Couldn't update user", error)
             alert("Failed to update user")
@@ -79,25 +104,25 @@ export default function UpdateUser({onSelectContent}){
 
     return(
         <div className='form'>
-            <h1>Update User {auth.id}</h1>
+            <h1>Update User {userId}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">Firstname</label>
-                <input type="text" name="firstName" id="firstName" placeholder='Firstname'
+                <input type="text" name="firstName" id="firstName" placeholder={firstName}
                 value={firstName} onChange={handleFirstNameInput}/>
                 <label htmlFor="lastName">Lastame</label>
-                <input type="text" name="lastName" id="lastName" placeholder='Lastname'
+                <input type="text" name="lastName" id="lastName" placeholder={lastName}
                 value={lastName} onChange={handleLastNameInput}/>
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" id="username" placeholder='Username'
+                <input type="text" name="username" id="username" placeholder={username}
                 value={username} onChange={handleUsernameInput}/>
                 <label htmlFor="phone">Phone</label>
-                <input type="text" name="phone" id="phone" placeholder='Phone'
+                <input type="text" name="phone" id="phone" placeholder={phone}
                 value={phone} onChange={handlePhoneInput}/>
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" placeholder='Email'
+                <input type="text" name="email" id="email" placeholder={email}
                 value={email} onChange={handleEmailInput}/>
                 <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password" placeholder='Password'
+                <input type="text" name="password" id="password" placeholder='New password'
                 value={password} onChange={handlePasswordInput}/>
                 {auth.isAdmin && (
                     <>
