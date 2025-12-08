@@ -17,6 +17,7 @@ export default function AdminBookingsMenu({onSelectContent}){
                 <button onClick={() => onSelectContent("GetBookingsById")}>Bookings by id</button>
                 <button onClick={() => onSelectContent("UpdateBooking")}>Update booking</button>
                 <button onClick={() => onSelectContent("DeleteBooking")}>Delete booking</button>
+                <button onClick={() => onSelectContent("ReturnCar")}>Return car</button>
             </div>
             </>
         )

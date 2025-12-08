@@ -21,7 +21,6 @@ export default function ReturnCar(){
                 return
             }
             alert("car returned")
-            setReload()
 
         }
     }

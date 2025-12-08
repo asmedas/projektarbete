@@ -4,6 +4,7 @@ export default function DataTable({ data, setId }) {
   if (!data || data.length === 0) return <p>No results</p>;
 
   const columns = Object.keys(data[0]);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
@@ -43,6 +44,7 @@ export default function DataTable({ data, setId }) {
   };
 
   const handleOnClick = (id) => {
+    setSelectedRow(id);
     if(setId){
       setId(id)
     } else{
@@ -88,7 +90,9 @@ export default function DataTable({ data, setId }) {
       <thead>
         <tr>
           {columns.map((c) => (
-            <th key={c} onClick={() => requestSort(c)} style={{ cursor: 'pointer' }}>
+            <th key={c} 
+            onClick={() => requestSort(c)} 
+            style={{ cursor: 'pointer' }}>
               {c}
               {sortConfig.key === c && (sortConfig.direction === 'asc' ? ' ▲' : ' ▼')}
             </th>
@@ -98,7 +102,9 @@ export default function DataTable({ data, setId }) {
 
       <tbody>
         {sortedData.map((row, i) => (
-          <tr key={row.id || i} onClick={() => handleOnClick(row.id)}>
+          <tr key={row.id || i} 
+          onClick={() => handleOnClick(row.id)} 
+          className={selectedRow === row.id ? "selected-row" : ""}>
             {columns.map((c) => (
               <td key={c}>{renderCell(row[c])}</td>
             ))}

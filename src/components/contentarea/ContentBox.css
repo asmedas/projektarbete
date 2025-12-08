@@ -1,7 +1,24 @@
 .contentbox {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: stretch;
     gap: 1.2rem;
+}
+.content-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+
+
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.content-inner h2 {
+    flex-shrink: 0;
+    white-space: nowrap;
 }

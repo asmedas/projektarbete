@@ -13,11 +13,20 @@ import CarCard from '../car-components/carcard/CarCard'
 import UserByOwnId from '../user-components/userByOwnId/UserByOwnId'
 import UpdateUser from '../user-components/updateuser/UpdateUser'
 import MyBookings from '../booking-components/mybookings/MyBookings'
+import SelectBookingById from '../booking-components/selectbookingbyid/SelectBookingById'
+import AddCar from '../car-components/addCar/AddCar'
+import UpdateCar from '../car-components/updatecar/UpdateCar'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
 
     const [car, setCar] = useState(null);
+    const [carId, setCarId] = useState(null);
+
+    const handleSelectCarIdContent = (newPage, carId) => {
+        setCarId(carId);
+        onSelectContent(newPage); 
+    }
 
     const handleSelectContent = (newPage, car = null) => {
         setCar(car);
@@ -44,7 +53,7 @@ export default function ContentArea({page, onSelectContent}){
                 )
             case "AdminViewCars":
                 return(
-                    <AdminViewCard/>
+                    <AdminViewCard onSelectContent={handleSelectCarIdContent}/>
                 )
             case "CarById":
                 return(
@@ -64,7 +73,7 @@ export default function ContentArea({page, onSelectContent}){
                 )
             case "SelectBookingById":
                 return(
-                    <h1>Select booking by ID component</h1>
+                    <SelectBookingById/>
                 )
             case "OrderCar":
                 return(
@@ -74,21 +83,17 @@ export default function ContentArea({page, onSelectContent}){
                 return(
                     <ViewUsers/>
                 )
-            case "DeleteUser":
-                return(
-                    <h1>Delete selected user component</h1>
-                )
             case "AddCar":
                 return(
-                    <h1>Add car component</h1>
+                    <AddCar/>
                 )
             case "UpdateCar":
                 return(
-                    <h1>Update car component</h1>
+                    <UpdateCar carId={carId} onSelectContent={onSelectContent}/>
                 )
             case "ReturnCar":
                 return(
-                    <ReturnCar/>
+                    <ReturnCar carId={carId}/>
                 )
             case "DeleteCar":
                 return(
