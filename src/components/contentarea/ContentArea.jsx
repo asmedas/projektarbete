@@ -18,6 +18,7 @@ import UpdateCar from '../car-components/updatecar/UpdateCar'
 import AdminUpdateUser from '../user-components/updateuser/AdminUpdateUser'
 import ViewBookings from '../booking-components/adminbookings/ViewBookings'
 import UpdateBooking from '../booking-components/updatebooking/UpdateBooking'
+import BookingsByUserId from '../user-components/bookingsByUserId/BookingsByUserId'
 
 export default function ContentArea({page, onSelectContent}){
     const {auth} = useAuth();
@@ -112,21 +113,13 @@ export default function ContentArea({page, onSelectContent}){
                 return(
                     <ViewBookings handleBookingSelectContent={handleBookingSelectContent}/>
                 )
-            case "GetActiveBookings":
-                return(
-                    <h1>View all active bookings component</h1>
-                )
-            case "GetBookingsById":
-                return(
-                    <h1>Get specific booking by booking-Id component</h1>
-                )
             case "UpdateBooking":
                 return(
                     <UpdateBooking booking={bookingId} onSelectContent={onSelectContent}/>
                 )
-            case "DeleteBooking":
+            case "BookingsByUserId":
                 return(
-                    <h1>Delete booking component</h1>
+                    <BookingsByUserId/>
                 )
             default:
                 return (

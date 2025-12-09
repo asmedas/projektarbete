@@ -44,7 +44,7 @@ export default function SideBar({onSelectContent}){
           <button onClick={() => onSelectContent("Home")}>Home</button>
           <AdminUserMenu onSelectContent={onSelectContent}/>
           <AdminCarMenu onSelectContent={onSelectContent}/>
-          <button onClick={() => onSelectContent("GetBookings")}>Bookings</button>
+          <AdminBookingsMenu onSelectContent={onSelectContent}/>
           <button onClick={() => {logout()
             onSelectContent("Home")}}>Logout</button>
       </nav>

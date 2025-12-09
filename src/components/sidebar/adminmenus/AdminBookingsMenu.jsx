@@ -11,7 +11,8 @@ export default function AdminBookingsMenu({onSelectContent}){
             </button>
 
             <div className="submenu">
-                
+                <button onClick={() => onSelectContent("GetBookings")}>Bookings</button>
+                <button onClick={() => onSelectContent("BookingsByUserId")}>Search bookings</button>
             </div>
             </>
         )
