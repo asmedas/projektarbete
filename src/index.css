@@ -13,9 +13,6 @@
   --text-primary: #ffffff;
   --text-secondary: #d1d5db;
 
-  --accent: #ef4444;
-  --accent-hover: #dc2626;
-
   --button-bg: rgba(0,0,0,0.35);
   --button-bg-hover: rgba(0,0,0,0.45);
 
@@ -71,6 +68,25 @@ button:active {
   box-shadow: 0 3px 8px rgba(0,0,0,0.20);
   transform: translateY(0px);
 }
+h1 { 
+  font-size: 2.2rem; 
+  font-weight: 600; 
+}
+h2 { 
+  font-size: 1.8rem; 
+  font-weight: 500;
+}
+h3 { 
+  font-size: 1.4rem; 
+  font-weight: 500; 
+}
+h4 { 
+  font-size: 1.2rem; 
+  font-weight: 500; 
+}
+p {
+  font-size: 1rem;
+}
 
 input{
   padding: 10px 14px;
@@ -123,20 +139,6 @@ input{
   transition: background 0.2s ease;
 }
 
-
-.submenu {
-  display: flex;
-  flex-direction: column;
-  margin-right: 12px;
-  gap: 5px;
-}
-
-.submenu button {
-  width: 80%;
-  font-size: 0.9rem;
-}
-
-
 body {
   font-size: clamp(14px, 2vw + 1rem, 20px);
   background-image: url('./assets/headerpicture.jpg');
@@ -182,23 +184,23 @@ body {
 }
 
 .panel {
-    padding: 20px;
-    border-radius: 6px;
-    margin: 20px 0;
-    display: inline-block;
-    width: auto;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+  display: inline-block;
+  width: auto;
 }
 
 .panel.neutral {
-    background-color: rgb(175, 173, 173);
+  background-color: rgb(175, 173, 173);
 }
 
 .panel.positive {
-    background-color: rgb(138, 240, 138);
+  background-color: rgb(138, 240, 138);
 }
 
 .panel.negative {
-    background-color: rgb(235, 117, 117);
+  background-color: rgb(235, 117, 117);
 }
 
 @media screen and (min-width: 600px) {

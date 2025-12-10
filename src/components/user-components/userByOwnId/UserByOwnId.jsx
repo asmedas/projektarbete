@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from "../../auth/AuthProvider";
 import UserCard from '../usercard/UserCard';
+import '../../loader/Loader.css';
 
 export default function UserByOwnId() {
     const { auth, authFetch } = useAuth();
@@ -24,7 +25,12 @@ export default function UserByOwnId() {
         load();
     }, []);
 
-    if (!user) return <p>Loading your user data...</p>;
+    if (!user) return (
+        <>
+            <div className='loader'></div>
+            <p>Loading your user data...</p>
+        </>
+);
 
     return <UserCard user={user} />;
 }

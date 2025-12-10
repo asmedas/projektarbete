@@ -127,7 +127,7 @@ export default function AddUser({onSelectContent}){
                     </>
                 )}
                 <button type='submit'>Create user</button>
-                {auth.isAdmin === false && <p className="signup-link" onClick={() => onSelectContent("Login")}>Already got account? Sign in</p>}
+                {auth.isAdmin === false && <p onClick={() => onSelectContent("Login")}>Already got account? Sign in</p>}
             </form>
         </div>
     )
