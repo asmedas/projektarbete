@@ -29,6 +29,7 @@ export default function BookingsByUserId(){
 
     if (!bookings) return (
         <ContentBox>
+            <label htmlFor="userId">UserId: </label>
             <input type="text" placeholder="Search by UserId" value={userId}
                     onChange={(e) => setUserId(e.target.value)}/>
             <button onClick={load}>Search</button>

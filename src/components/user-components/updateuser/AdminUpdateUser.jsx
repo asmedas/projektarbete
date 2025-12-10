@@ -10,6 +10,7 @@ export default function AdminUpdateUser({onSelectContent, userId}){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [role, setRole] = useState("")
+    const [idToFetch, setIdToFetch] = useState(auth.isAdmin ? userId : auth.id)
 
     const handleFirstNameInput = (e) => setFirstName(e.target.value)
     const handleLastNameInput = (e) => setLastName(e.target.value)
@@ -28,7 +29,12 @@ export default function AdminUpdateUser({onSelectContent, userId}){
     useEffect(() => {
         const loadUserData = async () => {
             try {
-                const response = await authFetch(`http://localhost:8080/api/v1/users/${userId}`);
+                if(auth.isAdmin && userId === null){
+                    alert("No user selected for update");
+                    onSelectContent("ViewUsers");
+                    return;
+                }
+                const response = await authFetch(`http://localhost:8080/api/v1/users/${idToFetch}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch user data");
                 }
@@ -78,7 +84,7 @@ export default function AdminUpdateUser({onSelectContent, userId}){
         };
 
         try{
-            const response = await authFetch(`http://localhost:8080/api/v1/users/${userId}`, {
+            const response = await authFetch(`http://localhost:8080/api/v1/users/${idToFetch}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -93,6 +99,9 @@ export default function AdminUpdateUser({onSelectContent, userId}){
             if(auth.id === userId){
                 updateUser(updatedUser, userId)
             }
+            if(!auth.isAdmin){
+                updateUser(updatedUser, auth.id)
+            }
             console.log("User updated!", response.status)
             alert("User updated")
             onSelectContent("ViewUsers")
@@ -104,7 +113,7 @@ export default function AdminUpdateUser({onSelectContent, userId}){
 
     return(
         <div className='form'>
-            <h1>Update User {userId}</h1>
+            <h1>Update User {auth.isAdmin ? userId : auth.id}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">Firstname</label>
                 <input type="text" name="firstName" id="firstName" placeholder={firstName}

@@ -22,7 +22,6 @@ export default function AdminViewCars({onSelectContent}) {
         }
         setCars(prevCars => prevCars.filter(car => car.id !== carId));
         setCarId(null);
-        alert("Car deleted successfully");
     } catch (err) {
         console.error(err);
     }
