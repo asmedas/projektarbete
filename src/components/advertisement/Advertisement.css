@@ -21,3 +21,10 @@
     hyphens: auto;
     text-align: center;
 }
+.advertisement img{
+    width: 100%;
+    height: auto; /* or a fixed height */
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
