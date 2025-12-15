@@ -1,7 +1,7 @@
 .gridwrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Så många kort som möjligt får plats per rad. 
-    korten ändrar även storlek beroende på vad som får plats men blir aldrig mindre än 200px*/
+    korten ändrar även storlek beroende på vad som får plats men blir aldrig mindre än 260px*/
     gap: 1.2rem;
     width: 100%;
 }
