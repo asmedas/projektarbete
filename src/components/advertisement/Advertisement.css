@@ -24,7 +24,7 @@
 }
 .advertisement img{
     width: 100%;
-    height: auto; /* or a fixed height */
+    height: auto;
     object-fit: cover;
     object-position: center;
     display: block;
