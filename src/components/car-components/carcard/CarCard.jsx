@@ -38,7 +38,7 @@ export default function CarCard({car, onSelectContent}){
       {!car.booked && 
         <>
             <label htmlFor="price">Price: {car.price}$ </label><br />
-            <p className="panel positive" onClick={() => onSelectContent("OrderCar", car)}>Purchase</p>
+            <p className="panel positive" onClick={() => onSelectContent("OrderCar", car)}>Book car</p>
             <p 
               className="panel neutral"
               onClick={(e) => {
